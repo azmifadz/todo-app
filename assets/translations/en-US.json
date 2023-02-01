@@ -1,3 +1,9 @@
 {
-  "appName": "ToDo App"
+  "app_name": "ToDo App",
+  "main_todo": {
+    "title": "To-Do List"
+  },
+  "add_todo": {
+    "title": "Add new To-Do List"
+  }
 }

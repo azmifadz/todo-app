@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_flutter/app/feature/main_todo/view/main_todo_page.dart';
+import 'package:todo_flutter/app/dependency_injection/dependency_injection.dart';
+import 'package:todo_flutter/app/routes/app_router.gr.dart';
 
 /// supported locales in this app
 /// the first locale will be the start and fallback locale
@@ -11,6 +12,8 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = getIt<AppRouter>();
+
     return EasyLocalization(
       supportedLocales: supportedLocales,
       startLocale: supportedLocales.first,
@@ -18,7 +21,7 @@ class TodoApp extends StatelessWidget {
       path: 'assets/translations',
       child: Builder(
         builder: (context) {
-          return MaterialApp(
+          return MaterialApp.router(
             theme: ThemeData(
               appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
               colorScheme: ColorScheme.fromSwatch(
@@ -28,7 +31,8 @@ class TodoApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            home: const MainTodoPage(),
+            routerDelegate: appRouter.delegate(),
+            routeInformationParser: appRouter.defaultRouteParser(),
           );
         },
       ),

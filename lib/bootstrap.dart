@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
 import 'package:todo_flutter/app/config/flavor.dart';
+import 'package:todo_flutter/app/dependency_injection/dependency_injection.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -21,17 +22,21 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(Flavor flavor, FutureOr<Widget> Function() builder) async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
-  Bloc.observer = AppBlocObserver();
-
   await runZonedGuarded(
-    () async => runApp(await builder()),
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await EasyLocalization.ensureInitialized();
+
+      configureDependencies();
+
+      Bloc.observer = AppBlocObserver();
+
+      runApp(await builder());
+    },
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
