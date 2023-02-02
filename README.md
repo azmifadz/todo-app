@@ -4,6 +4,9 @@
 
 ---
 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/2696819/216298111-8777c6d6-2930-4c52-96b5-6b4e8af79f3f.gif)
+
+
 ## Getting Started 🚀
 
 This project contains 3 flavors:
@@ -34,6 +37,10 @@ eg. To run flutter web using production flavor
 $ flutter run -d chrome --flavor production --target lib/main_production.dart
 
 ```
+
+Published Flutter web version can be found here
+https://azmifadz.github.io/todo/#/home
+
 
 _\*Todo Flutter works on iOS, Android, and Web._
 
