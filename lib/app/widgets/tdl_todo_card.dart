@@ -48,24 +48,32 @@ class _TodoCardState extends State<TodoCard> {
               ),
               child: Text(
                 widget.todo.title!,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 8),
             Flexible(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _CardItemColumn(
                       title: LocaleKeys.main_todo_todo_card_start_date.tr(),
-                      value: startDate != null ? formattedDateStringFromString(startDate) : '',
+                      value: startDate != null
+                          ? formattedDateStringFromString(startDate)
+                          : '',
                     ),
                     _CardItemColumn(
                       title: LocaleKeys.main_todo_todo_card_end_date.tr(),
-                      value: endDate != null ? formattedDateStringFromString(endDate) : '',
+                      value: endDate != null
+                          ? formattedDateStringFromString(endDate)
+                          : '',
                     ),
                     _CardItemColumn(
                       title: LocaleKeys.main_todo_todo_card_time_left.tr(),
@@ -84,7 +92,8 @@ class _TodoCardState extends State<TodoCard> {
             ColoredBox(
               color: const Color(0xffe8e2d0),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: Row(
                   children: [
                     Text('${LocaleKeys.main_todo_todo_card_status.tr()}:'),
@@ -120,7 +129,9 @@ class _TodoCardState extends State<TodoCard> {
   }
 
   String getStatusBasedOnCheckBox({required bool isChecked}) {
-    return isChecked ? LocaleKeys.main_todo_todo_card_completed.tr() : LocaleKeys.main_todo_todo_card_incomplete.tr();
+    return isChecked
+        ? LocaleKeys.main_todo_todo_card_completed.tr()
+        : LocaleKeys.main_todo_todo_card_incomplete.tr();
   }
 }
 

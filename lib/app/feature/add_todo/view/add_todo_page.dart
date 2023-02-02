@@ -26,7 +26,9 @@ class AddTodoPage extends StatelessWidget {
         initialTodo: todo,
       ),
       child: BlocListener<AddTodoCubit, AddTodoState>(
-        listenWhen: (previous, current) => previous.status != current.status && current.status == AddTodoStatus.success,
+        listenWhen: (previous, current) =>
+            previous.status != current.status &&
+            current.status == AddTodoStatus.success,
         listener: (context, state) {
           getIt<MainTodoCubit>().onLoadTodos();
           getIt<AppRouter>().pop();
@@ -42,15 +44,19 @@ class AddTodoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isNewTodo = context.select((AddTodoCubit cubit) => cubit.state.isNewTodo);
+    final isNewTodo =
+        context.select((AddTodoCubit cubit) => cubit.state.isNewTodo);
     final title = context.select((AddTodoCubit cubit) => cubit.state.title);
-    final startDate = context.select((AddTodoCubit cubit) => cubit.state.startDate);
+    final startDate =
+        context.select((AddTodoCubit cubit) => cubit.state.startDate);
     final endDate = context.select((AddTodoCubit cubit) => cubit.state.endDate);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          isNewTodo ? LocaleKeys.add_todo_appbar_title.tr() : LocaleKeys.add_todo_appbar_title_edit.tr(),
+          isNewTodo
+              ? LocaleKeys.add_todo_appbar_title.tr()
+              : LocaleKeys.add_todo_appbar_title_edit.tr(),
         ),
       ),
       body: Center(
@@ -65,23 +71,26 @@ class AddTodoView extends StatelessWidget {
                 const SizedBox(height: 8),
                 TdlFormTextField(
                   hintText: LocaleKeys.add_todo_title_hint.tr(),
-                  onTextChanged: (String value) => context.read<AddTodoCubit>().onTitleChanged(value),
+                  onTextChanged: (String value) =>
+                      context.read<AddTodoCubit>().onTitleChanged(value),
                   initialValue: title,
                 ),
                 const SizedBox(height: 24),
                 TdlFormTitleText(title: LocaleKeys.add_todo_start_date.tr()),
                 const SizedBox(height: 8),
                 TdlFormDatePicker(
-                  onSelectedDate: (DateTime value) =>
-                      context.read<AddTodoCubit>().onStartDateChanged(formattedDateOnly(value)),
+                  onSelectedDate: (DateTime value) => context
+                      .read<AddTodoCubit>()
+                      .onStartDateChanged(formattedDateOnly(value)),
                   selectedDate: formattedDateTimeFromString(startDate),
                 ),
                 const SizedBox(height: 24),
                 TdlFormTitleText(title: LocaleKeys.add_todo_end_date.tr()),
                 const SizedBox(height: 8),
                 TdlFormDatePicker(
-                  onSelectedDate: (DateTime value) =>
-                      context.read<AddTodoCubit>().onEndDateChanged(formattedDateOnly(value)),
+                  onSelectedDate: (DateTime value) => context
+                      .read<AddTodoCubit>()
+                      .onEndDateChanged(formattedDateOnly(value)),
                   selectedDate: formattedDateTimeFromString(endDate),
                 ),
               ],
@@ -96,7 +105,9 @@ class AddTodoView extends StatelessWidget {
           child: TextButton(
             onPressed: () => context.read<AddTodoCubit>().onSubmitted(),
             child: Text(
-              isNewTodo ? LocaleKeys.add_todo_create_now.tr() : LocaleKeys.add_todo_edit_todo.tr(),
+              isNewTodo
+                  ? LocaleKeys.add_todo_create_now.tr()
+                  : LocaleKeys.add_todo_edit_todo.tr(),
               style: const TextStyle(color: Colors.white),
             ),
           ),

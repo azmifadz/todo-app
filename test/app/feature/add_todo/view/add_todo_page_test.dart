@@ -26,7 +26,8 @@ void main() {
       await tester.pumpApp(const AddTodoPage());
 
       expect(find.text(LocaleKeys.add_todo_title_hint.tr()), findsOneWidget);
-      expect(find.text(LocaleKeys.add_todo_select_date.tr()), findsAtLeastNWidgets(2));
+      expect(find.text(LocaleKeys.add_todo_select_date.tr()),
+          findsAtLeastNWidgets(2));
     });
   });
 }

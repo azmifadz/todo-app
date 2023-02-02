@@ -4,6 +4,8 @@ import 'package:todo_flutter/app/feature/main_todo/main_todo.dart';
 
 export 'pump_app.dart';
 
-class MockMainTodoCubit extends MockCubit<MainTodoState> implements MainTodoCubit {}
+class MockMainTodoCubit extends MockCubit<MainTodoState>
+    implements MainTodoCubit {}
 
-class MockAddTodoCubit extends MockCubit<AddTodoState> implements AddTodoCubit {}
+class MockAddTodoCubit extends MockCubit<AddTodoState>
+    implements AddTodoCubit {}

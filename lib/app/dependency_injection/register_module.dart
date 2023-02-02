@@ -9,5 +9,6 @@ abstract class RegisterModule {
   AppRouter get appRouter => AppRouter();
 
   @singleton
-  MainTodoCubit get mainTodoCubit => MainTodoCubit(todosRepository: TodosRepository.instance);
+  MainTodoCubit get mainTodoCubit =>
+      MainTodoCubit(todosRepository: TodosRepository.instance);
 }

@@ -25,7 +25,8 @@ class _TdlFormDatePickerState extends State<TdlFormDatePicker> {
     super.initState();
 
     if (widget.selectedDate != null) {
-      textEditingController.text = dateFilterDisplayDateFormat().format(widget.selectedDate!);
+      textEditingController.text =
+          dateFilterDisplayDateFormat().format(widget.selectedDate!);
     }
   }
 
@@ -56,7 +57,8 @@ class _TdlFormDatePickerState extends State<TdlFormDatePicker> {
     );
     if (picked != null) {
       setState(() {
-        textEditingController.text = dateFilterDisplayDateFormat().format(picked);
+        textEditingController.text =
+            dateFilterDisplayDateFormat().format(picked);
         widget.onSelectedDate(picked);
       });
     }
