@@ -11,7 +11,8 @@ void main() {
   late AddTodoCubit addTodoCubit;
 
   setUpAll(() {
-    configureDependencies();
+    getIt.allReady();
+
     addTodoCubit = MockAddTodoCubit();
   });
 
