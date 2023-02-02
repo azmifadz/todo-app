@@ -50,6 +50,8 @@ class AddTodoView extends StatelessWidget {
     final startDate =
         context.select((AddTodoCubit cubit) => cubit.state.startDate);
     final endDate = context.select((AddTodoCubit cubit) => cubit.state.endDate);
+    final isFormEmpty =
+        context.select((AddTodoCubit cubit) => cubit.state.isFormEmpty);
 
     return Scaffold(
       appBar: AppBar(
@@ -103,7 +105,9 @@ class AddTodoView extends StatelessWidget {
           width: double.infinity,
           color: Colors.black,
           child: TextButton(
-            onPressed: () => context.read<AddTodoCubit>().onSubmitted(),
+            onPressed: isFormEmpty
+                ? null
+                : () => context.read<AddTodoCubit>().onSubmitted(),
             child: Text(
               isNewTodo
                   ? LocaleKeys.add_todo_create_now.tr()

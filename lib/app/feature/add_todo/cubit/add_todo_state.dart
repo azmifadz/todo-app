@@ -19,6 +19,8 @@ class AddTodoState extends Equatable {
 
   bool get isNewTodo => initialTodo == null;
 
+  bool get isFormEmpty => title.isEmpty || startDate.isEmpty || endDate.isEmpty;
+
   AddTodoState copyWith({
     AddTodoStatus? status,
     Todo? initialTodo,
