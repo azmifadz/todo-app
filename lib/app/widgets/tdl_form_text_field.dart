@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+typedef StringCallback = void Function(String value);
+
 class TdlFormTextField extends StatelessWidget {
   const TdlFormTextField({
     required this.hintText,
@@ -9,7 +11,7 @@ class TdlFormTextField extends StatelessWidget {
   });
 
   final String hintText;
-  final Function(String) onTextChanged;
+  final StringCallback onTextChanged;
   final String? initialValue;
 
   @override
@@ -23,9 +25,7 @@ class TdlFormTextField extends StatelessWidget {
         hintText: hintText,
       ),
       maxLines: 5,
-      onChanged: (value) {
-        onTextChanged(value);
-      },
+      onChanged: onTextChanged,
       initialValue: initialValue,
       textInputAction: TextInputAction.done,
     );

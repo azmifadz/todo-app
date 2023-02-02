@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/app/translations/locale_keys.g.dart';
 import 'package:todo_flutter/app/utils/date_time_helper.dart';
 
+typedef DateTimeCallback = void Function(DateTime value);
+
 class TdlFormDatePicker extends StatefulWidget {
   const TdlFormDatePicker({
     required this.onSelectedDate,
@@ -10,7 +12,7 @@ class TdlFormDatePicker extends StatefulWidget {
     super.key,
   });
 
-  final Function onSelectedDate;
+  final DateTimeCallback onSelectedDate;
   final DateTime? selectedDate;
 
   @override

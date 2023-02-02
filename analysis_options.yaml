@@ -7,4 +7,5 @@ analyzer:
     - '**.freezed.dart'
     - '**.g.dart'
     - '**.gr.dart'
+    - '**.config.dart'
     - '**/generated_plugin_registrant.dart'
