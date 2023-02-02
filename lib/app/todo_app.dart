@@ -23,10 +23,7 @@ class TodoApp extends StatelessWidget {
         builder: (context) {
           return MaterialApp.router(
             theme: ThemeData(
-              appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-              colorScheme: ColorScheme.fromSwatch(
-                accentColor: const Color(0xFF13B9FF),
-              ),
+              primarySwatch: Colors.amber,
             ),
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,

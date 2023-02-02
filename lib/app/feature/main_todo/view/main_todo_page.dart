@@ -5,6 +5,7 @@ import 'package:todo_flutter/app/dependency_injection/dependency_injection.dart'
 import 'package:todo_flutter/app/feature/main_todo/cubit/main_todo_cubit.dart';
 import 'package:todo_flutter/app/routes/app_router.gr.dart';
 import 'package:todo_flutter/app/translations/locale_keys.g.dart';
+import 'package:todo_flutter/app/widgets/tdl_todo_card.dart';
 
 class MainTodoPage extends StatelessWidget {
   const MainTodoPage({super.key});
@@ -12,28 +13,44 @@ class MainTodoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MainTodoCubit(),
-      child: const CounterView(),
+      create: (_) => getIt<MainTodoCubit>(),
+      child: const MainTodoView(),
     );
   }
 }
 
-class CounterView extends StatelessWidget {
-  const CounterView({super.key});
+class MainTodoView extends StatelessWidget {
+  const MainTodoView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          LocaleKeys.main_todo_title.tr(),
+          LocaleKeys.main_todo_appbar_title.tr(),
         ),
       ),
-      body: Center(
-        child: Text('Hello', style: Theme.of(context).textTheme.displayLarge),
+      body: BlocBuilder<MainTodoCubit, MainTodoState>(
+        builder: (context, state) {
+          final todos = state.todos;
+
+          return ListView.builder(
+            itemCount: todos.length,
+            itemBuilder: (context, index) {
+              final todo = todos[index];
+
+              return InkWell(
+                onTap: () => getIt<AppRouter>().push(AddTodoRoute(todo: todo)),
+                child: TodoCard(
+                  todo: todo,
+                ),
+              );
+            },
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => getIt<AppRouter>().push(const AddTodoRoute()),
+        onPressed: () => getIt<AppRouter>().push(AddTodoRoute()),
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

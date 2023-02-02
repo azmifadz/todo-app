@@ -1,9 +1,26 @@
 {
   "app_name": "ToDo App",
   "main_todo": {
-    "title": "To-Do List"
+    "appbar_title": "To-Do List",
+    "todo_card": {
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "time_left": "Time left",
+      "status": "Status",
+      "tick_to_complete": "Tick is completed",
+      "completed": "Completed",
+      "incomplete": "Incomplete"
+    }
   },
   "add_todo": {
-    "title": "Add new To-Do List"
+    "appbar_title": "Add new To-Do List",
+    "appbar_title_edit": "Edit To-Do List",
+    "title": "To-Do Title",
+    "title_hint": "Please key in your To-Do title here",
+    "start_date": "Start Date",
+    "end_date": "Estimated End Date",
+    "select_date": "Select a Date",
+    "create_now": "Create Now",
+    "edit_todo": "Edit Todo"
   }
 }

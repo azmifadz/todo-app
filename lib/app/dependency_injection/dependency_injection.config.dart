@@ -8,6 +8,8 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:todo_flutter/app/dependency_injection/register_module.dart'
+    as _i5;
+import 'package:todo_flutter/app/feature/main_todo/cubit/main_todo_cubit.dart'
     as _i4;
 import 'package:todo_flutter/app/routes/app_router.gr.dart' as _i3;
 
@@ -26,8 +28,9 @@ extension GetItInjectableX on _i1.GetIt {
     );
     final registerModule = _$RegisterModule();
     gh.singleton<_i3.AppRouter>(registerModule.appRouter);
+    gh.singleton<_i4.MainTodoCubit>(registerModule.mainTodoCubit);
     return this;
   }
 }
 
-class _$RegisterModule extends _i4.RegisterModule {}
+class _$RegisterModule extends _i5.RegisterModule {}

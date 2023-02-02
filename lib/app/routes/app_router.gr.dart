@@ -16,6 +16,7 @@ import 'package:flutter/material.dart' as _i4;
 
 import '../feature/add_todo/view/add_todo_page.dart' as _i2;
 import '../feature/main_todo/main_todo.dart' as _i1;
+import '../models/todo.dart' as _i5;
 
 class AppRouter extends _i3.RootStackRouter {
   AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
@@ -30,9 +31,14 @@ class AppRouter extends _i3.RootStackRouter {
       );
     },
     AddTodoRoute.name: (routeData) {
+      final args = routeData.argsAs<AddTodoRouteArgs>(
+          orElse: () => const AddTodoRouteArgs());
       return _i3.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i2.AddTodoPage(),
+        child: _i2.AddTodoPage(
+          todo: args.todo,
+          key: args.key,
+        ),
       );
     },
   };
@@ -70,12 +76,34 @@ class MainTodoRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AddTodoPage]
-class AddTodoRoute extends _i3.PageRouteInfo<void> {
-  const AddTodoRoute()
-      : super(
+class AddTodoRoute extends _i3.PageRouteInfo<AddTodoRouteArgs> {
+  AddTodoRoute({
+    _i5.Todo? todo,
+    _i4.Key? key,
+  }) : super(
           AddTodoRoute.name,
           path: '/add-todo-page',
+          args: AddTodoRouteArgs(
+            todo: todo,
+            key: key,
+          ),
         );
 
   static const String name = 'AddTodoRoute';
+}
+
+class AddTodoRouteArgs {
+  const AddTodoRouteArgs({
+    this.todo,
+    this.key,
+  });
+
+  final _i5.Todo? todo;
+
+  final _i4.Key? key;
+
+  @override
+  String toString() {
+    return 'AddTodoRouteArgs{todo: $todo, key: $key}';
+  }
 }
